@@ -127,9 +127,9 @@ NODE_ENV=development
 
  ##**Install dependencies**
 
- cd frontend
+       cd frontend
  
- npm install
+       npm install
 
 🛡️ ##**Security Highlights**
 
