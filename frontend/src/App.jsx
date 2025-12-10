@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Mic, MicOff, Save, Search, Plus, X, Pin, Trash2, Edit2, Tag, Folder, LogOut, User } from 'lucide-react';
 
 // API Configuration
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://voice-to-text-notesapp.onrender.com/api';
 
 
 const api = {
