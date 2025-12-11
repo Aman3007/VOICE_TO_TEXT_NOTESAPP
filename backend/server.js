@@ -45,8 +45,8 @@ app.use(cors({
 // MONGODB CONNECTION
 // ============================================
 mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('✅ MongoDB connected successfully'))
-  .catch(err => console.error('❌ MongoDB connection error:', err));
+  .then(() => console.log(' MongoDB connected successfully'))
+  .catch(err => console.error(' MongoDB connection error:', err));
 
 
 // MONGOOSE SCHEMAS & MODELS
@@ -255,13 +255,12 @@ app.post('/api/auth/register', async (req, res) => {
     );
 
     // Set cookie
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-     sameSite: "none",
+   res.cookie('token', token, {
+  httpOnly: true,
   secure: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    });
+  sameSite: "none",
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
 
     res.status(201).json({
       success: true,
@@ -309,12 +308,11 @@ app.post('/api/auth/login', async (req, res) => {
 
     // Set cookie
     res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: "none",
+  httpOnly: true,
   secure: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-    });
+  sameSite: "none",
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
 
     res.json({
       success: true,
@@ -333,6 +331,12 @@ app.post('/api/auth/login', async (req, res) => {
 // Logout
 app.post('/api/auth/logout', (req, res) => {
   res.clearCookie('token');
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+});
+
   res.json({ success: true, message: 'Logged out successfully' });
 });
 
